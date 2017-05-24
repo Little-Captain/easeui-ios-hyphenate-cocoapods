@@ -33,11 +33,6 @@
     [self addConstraints:self.marginConstraints];
 }
 
-- (void)_setupImageBubbleConstraints
-{
-    [self _setupGifBubbleMarginConstraints];
-}
-
 #pragma mark - public
 
 - (void)setupGifBubbleView
@@ -48,7 +43,7 @@
     [self addSubview:self.imageView];
     self.backgroundImageView.hidden = YES;
     
-    [self _setupImageBubbleConstraints];
+    [self _setupGifBubbleMarginConstraints];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:100]];
 }
 
