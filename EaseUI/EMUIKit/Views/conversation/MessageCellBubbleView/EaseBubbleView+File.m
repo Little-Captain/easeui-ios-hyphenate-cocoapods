@@ -17,7 +17,7 @@
 
 #pragma mark - private
 
-- (void)_setupFileBubbleMarginConstraints
+- (void)file_setupFileBubbleMarginConstraints
 {
     [self.marginConstraints removeAllObjects];
     
@@ -44,7 +44,7 @@
 
 - (void)_setupFileBubbleConstraints
 {
-    [self _setupFileBubbleMarginConstraints];
+    [self file_setupFileBubbleMarginConstraints];
     
     //icon view
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fileIconView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.fileIconView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
@@ -87,7 +87,7 @@
     _margin = margin;
     
     [self removeConstraints:self.marginConstraints];
-    [self _setupFileBubbleMarginConstraints];
+    [self file_setupFileBubbleMarginConstraints];
 }
 
 @end
