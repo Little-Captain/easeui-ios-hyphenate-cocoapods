@@ -17,7 +17,7 @@
 
 #pragma mark - private
 
-- (void)git_setupFileBubbleMarginConstraints
+- (void)_setupGifBubbleMarginConstraints
 {
     NSLayoutConstraint *marginTopConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:self.margin.top];
     NSLayoutConstraint *marginBottomConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-self.margin.bottom];
@@ -35,7 +35,7 @@
 
 - (void)_setupImageBubbleConstraints
 {
-    [self git_setupFileBubbleMarginConstraints];
+    [self _setupGifBubbleMarginConstraints];
 }
 
 #pragma mark - public
@@ -60,7 +60,7 @@
     _margin = margin;
     
     [self removeConstraints:self.marginConstraints];
-    [self git_setupFileBubbleMarginConstraints];
+    [self _setupGifBubbleMarginConstraints];
 }
 
 @end
