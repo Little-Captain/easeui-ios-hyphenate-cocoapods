@@ -73,10 +73,12 @@ static EaseMessageReadManager *detailInstance = nil;
         _photoBrowser.displayNavArrows = YES;
         _photoBrowser.displaySelectionButtons = NO;
         _photoBrowser.alwaysShowControls = NO;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored"-Wdeprecated-declarations"
+        
+        _Pragma("clang diagnostic push")
+        _Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"")
         _photoBrowser.wantsFullScreenLayout = YES;
-#pragma clang diagnostic pop
+        _Pragma("clang diagnostic pop")
+        
         _photoBrowser.zoomPhotosToFill = YES;
         _photoBrowser.enableGrid = NO;
         _photoBrowser.startOnGrid = NO;
