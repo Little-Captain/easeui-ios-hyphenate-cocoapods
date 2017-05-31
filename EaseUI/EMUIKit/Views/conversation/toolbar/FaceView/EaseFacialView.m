@@ -25,11 +25,7 @@
 - (void) setImage:(UIImage *)image withTitle:(NSString *)title forState:(UIControlState)stateType {
     //UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
     CGSize titleSize;
-    if ([NSString instancesRespondToSelector:@selector(sizeWithAttributes:)]) {
-        titleSize = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]}];
-    } else {
-        titleSize = [title sizeWithFont:[UIFont systemFontOfSize:10]];
-    }
+    titleSize = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]}];
     [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self setImageEdgeInsets:UIEdgeInsetsMake(0,
                                               0.0,
