@@ -1840,6 +1840,35 @@
     }];
 }
 
+- (void)lc_sendMessage:(EMMessage *)message completion:(void (^)(BOOL isSuccess))completion {
+    
+    if (self.conversation.type == EMConversationTypeGroupChat){
+        message.chatType = EMChatTypeGroupChat;
+    }
+    else if (self.conversation.type == EMConversationTypeChatRoom){
+        message.chatType = EMChatTypeChatRoom;
+    }
+    
+    [self addMessageToDataSource:message
+                        progress:nil];
+    
+    __weak typeof(self) weakself = self;
+    [[EMClient sharedClient].chatManager sendMessage:message progress:^(int progress) {
+        if (weakself.dataSource && [weakself.dataSource respondsToSelector:@selector(messageViewController:updateProgress:messageModel:messageBody:)]) {
+            [weakself.dataSource messageViewController:weakself updateProgress:progress messageModel:nil messageBody:message.body];
+        }
+    } completion:^(EMMessage *aMessage, EMError *aError) {
+        if (!aError) {
+            [weakself _refreshAfterSentMessage:aMessage];
+            !completion ? : completion(YES);
+        }
+        else {
+            [weakself.tableView reloadData];
+            !completion ? : completion(NO);
+        }
+    }];
+}
+
 - (void)sendTextMessage:(NSString *)text
 {
     NSDictionary *ext = nil;
