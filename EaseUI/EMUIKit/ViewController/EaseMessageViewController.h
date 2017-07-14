@@ -506,4 +506,13 @@ shouldSendHasReadAckForMessage:(EMMessage *)message
 - (BOOL)shouldSendHasReadAckForMessage:(EMMessage *)message
                                  read:(BOOL)read;
 
+#pragma mark - 暴露必要的私有方法
+
+/**
+ 发送消息
+
+ @param message 消息
+ */
+- (void)_sendMessage:(EMMessage *)message;
+
 @end
